@@ -3,10 +3,7 @@
 <mapper namespace="com.tmp.dao.SampleDAO">
 
     <select id="sampleList" resultType="com.tmp.dto.SampleDTO">
-        select
-            *
-        from
-            user
+        select eml as email from v_user_info
     </select>
 
 </mapper>
