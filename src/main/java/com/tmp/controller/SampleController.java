@@ -19,8 +19,24 @@ public class SampleController {
     @RequestMapping(value = "/test" , method = RequestMethod.GET)
     public String sampleIndex(Model model) {
         List<SampleDTO> list = sampleServices.sampleList();
+        List<SampleDTO> Idlist = sampleServices.sampleListId();
+        List<SampleDTO> Usernmlist = sampleServices.sampleListUsernm();
+        List<SampleDTO> Crtdtlist = sampleServices.sampleListCrtdt();
+        
         model.addAttribute("list", list);
-        model.addAttribute("test", "sadfsadf");
+        model.addAttribute("Idlist", Idlist);
+        model.addAttribute("Usernmlist", Usernmlist);
+        model.addAttribute("Crtdtlist", Crtdtlist);
         return "sample";
+    }
+    
+    @RequestMapping(value = "/action1", method = RequestMethod.POST)
+    public String action1(SampleDTO dto) {
+    	
+    	sampleServices.insertUser(dto);
+    	
+    	System.out.println("여기.");
+    	
+    	return "sample";
     }
 }

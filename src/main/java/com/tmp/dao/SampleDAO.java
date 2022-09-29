@@ -1,12 +1,18 @@
 package com.tmp.dao;
 
 import com.tmp.dto.SampleDTO;
-
 import java.util.List;
 
 
 public interface SampleDAO {
+	
+    List<SampleDTO> sampleList();  
 
-    List<SampleDTO> sampleList();
-
+    List<SampleDTO> sampleListId();
+    
+    List<SampleDTO> sampleListUsernm();
+    
+    List<SampleDTO> sampleListCrtdt();
+    
+    void insertUser(SampleDTO dto);
 }

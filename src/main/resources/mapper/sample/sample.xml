@@ -5,5 +5,27 @@
     <select id="sampleList" resultType="com.tmp.dto.SampleDTO">
         select eml as email from v_user_info
     </select>
-
+    
+    <select id="sampleListId" resultType="com.tmp.dto.SampleDTO">
+        select id as id from v_user_info
+    </select>
+    
+    <select id="sampleListUsernm" resultType="com.tmp.dto.SampleDTO">
+        select nm as userName from v_user_info
+    </select>
+    
+    <select id="sampleListCrtdt" resultType="com.tmp.dto.SampleDTO">
+        select crt_dt as createDate from v_user_info
+    </select>
+    
+    <insert id="insertUser" parameterType="com.tmp.dto.SampleDTO">
+    	insert into tmp_user (
+    		id
+    		, name
+    	) values (
+    		#{email}
+    		, #{userName}
+    	)
+    </insert>
+ 
 </mapper>

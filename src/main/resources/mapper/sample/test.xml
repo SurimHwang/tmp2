@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tmp.dao.TestDAO">
+
+	<select id="selectUser" parameterType="com.tmp.dto.TestDTO" resultType="com.tmp.dto.TestDTO">
+		select id, name as email, userName
+		from tmp_user
+		where id=#{email}
+		and name=#{userName}
+	</select>
+
+	<insert id="signUp" parameterType="com.tmp.dto.TestDTO">
+		insert into tmp_user (
+		id
+		, name
+		) values (
+		#{email}
+		, #{userName}
+		)
+	</insert>
+
+	<update id="updateUserName" parameterType="com.tmp.dto.TestDTO">
+		update tmp_user
+		set id = #{email}
+		where name = #{userName}
+	</update>
+
+	<delete id="deleteUser" parameterType="com.tmp.dto.TestDTO">
+		delete from tmp_user
+		where name = #{userName}
+	</delete>
+
+</mapper>

@@ -7,4 +7,12 @@ import java.util.List;
 public interface SampleServices {
 
     List<SampleDTO> sampleList();
+    
+    List<SampleDTO> sampleListId();
+    
+    List<SampleDTO> sampleListUsernm();
+    
+    List<SampleDTO> sampleListCrtdt();
+    
+    void insertUser(SampleDTO dto);
 }

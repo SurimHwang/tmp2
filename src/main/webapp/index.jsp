@@ -1,7 +1,7 @@
 <html>
 <body>
     <script>
-        location.href = '/test';
+        location.href = '/login.jsp';
     </script>
 </body>
 

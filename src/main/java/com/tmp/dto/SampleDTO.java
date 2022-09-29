@@ -1,24 +1,26 @@
 package com.tmp.dto;
+import java.util.Date;
 
 public class SampleDTO {
-    private int id;
-    private int createDate;
+	private String table;
+    private long id;
+    private Date createDate;
     private String email;
     private String userName;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(int createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
