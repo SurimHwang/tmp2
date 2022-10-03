@@ -53,7 +53,6 @@ public class BoardController {
 	public String deleteBoard(HttpServletRequest request)throws Exception {
 		String title = request.getParameter("title");
 		BoardServices.deleteBoard(title);
-		System.out.println(title);
 		System.out.println("삭제 성공");
 		
 		return "redirect:/boardlist.do";
@@ -67,8 +66,12 @@ public class BoardController {
 		return "redirect:/selectone.do";
 	}
 	
-	@RequestMapping(value="/updatepage")
-	public String updatePage(){
+	@RequestMapping(value="/updatepage", method = {RequestMethod.GET, RequestMethod.POST})
+	public String updatePage(Model model, HttpServletRequest request) throws Exception{
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		model.addAttribute(bd);
 		System.out.println("수정 페이지");
 		
 		return "updatepage";
