@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TestServices {
 
-    List<TestDTO> selectUser();
+    List<TestDTO> login(TestDTO dto);
     
     void signUp(TestDTO dto);
     

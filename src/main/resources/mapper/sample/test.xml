@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tmp.dao.TestDAO">
 
-	<select id="selectUser" parameterType="com.tmp.dto.TestDTO" resultType="com.tmp.dto.TestDTO">
-		select id, name as email, userName
-		from tmp_user
+	<select id="login" parameterType="com.tmp.dto.TestDTO" resultType="com.tmp.dto.TestDTO">
+		select id as email, name as userName
+		from user
 		where id=#{email}
 		and name=#{userName}
 	</select>
 
 	<insert id="signUp" parameterType="com.tmp.dto.TestDTO">
-		insert into tmp_user (
+		insert into user (
 		id
 		, name
 		) values (
