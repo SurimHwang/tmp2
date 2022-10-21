@@ -71,7 +71,7 @@ public class BoardController {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		model.addAttribute(bd);
+		//model.addAttribute();
 		System.out.println("수정 페이지");
 		
 		return "updatepage";
