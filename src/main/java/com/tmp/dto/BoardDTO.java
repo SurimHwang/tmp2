@@ -1,13 +1,15 @@
 package com.tmp.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 public class BoardDTO {
-	private String table;
 	private String bdName;
 	private String bdTitle;
 	private String bdContent;
 	private Date bdDate;
+	
+	private List<BoardContentDTO> bdContentDTO;
 	
 	
 	public String getBdName() {
@@ -34,6 +36,11 @@ public class BoardDTO {
 	public void setBdDate(Date bdDate) {
 		this.bdDate = bdDate;
 	}
-	
+	public List<BoardContentDTO> getBdContentDTO() {
+		return bdContentDTO;
+	}
+	public void setBdContentDTO(List<BoardContentDTO> bdContentDTO) {
+		this.bdContentDTO = bdContentDTO;
+	}
 	
 }
