@@ -1,5 +1,6 @@
 package com.tmp.service;
 
+import com.tmp.dto.BoardContentDTO;
 import com.tmp.dto.BoardDTO;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface BoardServices {
 	void deleteBoard(String title);
 	
 	void updateBoard(String title, String content);
+	
+	void insertbdContent(BoardContentDTO dtos);
 }

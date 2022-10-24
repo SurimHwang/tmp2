@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tmp.dao.BoardDAO;
+import com.tmp.dto.BoardContentDTO;
 import com.tmp.dto.BoardDTO;
 import com.tmp.service.BoardServices;
 import java.sql.Date;
@@ -37,5 +38,9 @@ public class BoardServicesImpl implements BoardServices {
 	
 	public void updateBoard(String title, String content) {
 		boardDAO.updateBoard(title, content);
+	}
+	
+	public void insertbdContent(BoardContentDTO dto) {
+		boardDAO.insertbdContent(dto);
 	}
 }

@@ -2,6 +2,7 @@ package com.tmp.dao;
 
 import java.util.List;
 
+import com.tmp.dto.BoardContentDTO;
 import com.tmp.dto.BoardDTO;
 
 public interface BoardDAO {
@@ -15,4 +16,6 @@ public interface BoardDAO {
 	void deleteBoard(String title); //게시글 삭제
 	
 	void updateBoard(String title, String content); //게시글 수정
+	
+	void insertbdContent(BoardContentDTO dto);
 }
