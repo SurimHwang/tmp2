@@ -11,9 +11,7 @@
 		이메일 : <input name="email" type="text" /> <br /> 
 		이름 : <input name="userName" type="text" /><br />
 		<button type="submit">로그인</button>
-	</form>
-	<form action="signup.jsp" method="post">
-		<button>회원가입 페이지</button>
+		<button type="button" onclick="location='signup.jsp'" formmethod="post">회원가입 페이지</button>
 	</form>
 
 </body>

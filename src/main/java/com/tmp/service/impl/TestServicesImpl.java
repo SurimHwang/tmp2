@@ -14,8 +14,8 @@ public class TestServicesImpl implements TestServices {
 	@Autowired
 	private TestDAO testDAO;
 
-	public List<TestDTO> login(TestDTO dto) {
-		List<TestDTO> dao = testDAO.login(dto);
+	public TestDTO login(TestDTO dto) {
+		TestDTO dao = testDAO.login(dto);
 		if (dao != null) {
 			return dao;
 		}

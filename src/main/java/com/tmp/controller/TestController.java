@@ -1,14 +1,15 @@
 package com.tmp.controller;
 
-import com.tmp.dto.TestDTO;
-import com.tmp.service.TestServices;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
+import com.tmp.dto.TestDTO;
+import com.tmp.service.TestServices;
 
 @Controller
 public class TestController {
@@ -17,19 +18,24 @@ public class TestController {
 	private TestServices testServices;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(Model model, TestDTO dto) {
+	public String login(Model model, TestDTO dto, HttpSession session) {
 
-		List<TestDTO> ts = testServices.login(dto);
-		System.out.println(ts);
+		TestDTO ts = testServices.login(dto);
 		
-		if (!ts.isEmpty()) {
-			List<TestDTO> login = testServices.login(dto);
+		if (ts!=null) {
+			TestDTO login = testServices.login(dto);
 
-			model.addAttribute("userlist", login);
-
+			model.addAttribute("user", login);
+			
 			System.out.println("로그인");
+			
+			session.setAttribute("user", login);
+			
+			TestDTO dto_ = (TestDTO)session.getAttribute("user");
+			session.setAttribute("userName", dto_.getUserName()); 
 
-			return "board";
+			System.out.println(dto_.getUserName());
+			return "forward:/boardlist.do";
 		}
 		return "redirect:/";
 	}

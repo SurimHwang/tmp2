@@ -30,17 +30,16 @@ import com.tmp.dto.BoardContentDTO;
 import com.tmp.service.BoardServices;
 
 @RestController
-public class BoardDBController {
+public class APIController {
 
 	@Autowired
 	private BoardServices BoardServices;
 
 	@RequestMapping("/restTest")
-	public String restTest(HttpServletRequest request, Model model)
+	public void restTest(HttpServletRequest request, Model model)
 			throws IOException, ParserConfigurationException, SAXException {
 
 		StringBuilder urlBuilder = null;
-//		List<BoardContentDTO> dtos = new ArrayList<BoardContentDTO>();
 		
 		for (int j = 10; j <= 12; j++) {
 			try {
@@ -93,40 +92,30 @@ public class BoardDBController {
 	    			dto.setAddress("서울시 종로구");
 	    			
 //	    			dtos.add(dto);
-	    			BoardServices.insertbdContent(dto);
+//	    			BoardServices.insertbdContent(dto);
 	    			
 	    		} else {
 	    			System.out.println("공백 입니다.");
 	    		}
 		     }
 	      
-	        BufferedReader rd;
-	        
-	        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-	            rd = new BufferedReader(new InputStreamReader(conn.getInputStream(),"ISO-8859-1"));
-	        } else {
-	            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream(),"ISO-8859-1"));
-	        }
-	        
-	        StringBuilder sb = new StringBuilder();
-	        String line;
-	        while ((line = rd.readLine()) != null) {
-	            sb.append(line);
-	        }
-	        rd.close();
+//	        BufferedReader rd;
+//	        
+//	        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+//	            rd = new BufferedReader(new InputStreamReader(conn.getInputStream(),"ISO-8859-1"));
+//	        } else {
+//	            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream(),"ISO-8859-1"));
+//	        }
+//	        
+//	        StringBuilder sb = new StringBuilder();
+//	        String line;
+//	        while ((line = rd.readLine()) != null) {
+//	            sb.append(line);
+//	        }
+//	        rd.close();
 	        conn.disconnect();
 	        //System.out.println(sb.toString());
 		}
-//		for(BoardContentDTO dto: dtos) {
-//			System.out.println(dto.getPrice());
-//			System.out.println(dto.getApartName());
-//			System.out.println(dto.getFloor());
-//			System.out.println(dto.getDate());
-//		}
-		
-		
-	    
-        return "/selectone";
 	 }
 	
 

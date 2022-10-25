@@ -6,29 +6,29 @@
 <title>BoardList</title>
 </head>
 <body>
-	<h3>게시판</h3>
+	<p><h2>게시판</h2>${userName}님 안녕하세요!&nbsp;&nbsp;&nbsp;<button onclick="location.href='../../login.jsp'">로그인 페이지</button></p>
 	<table border="1">
-		<col width="80px">
-		<col width="200px">
+		<col width="40px">
+		<col width="300px">
+		<col width="50px">
+		<col width="100px">
 		<col width="100px">
 		<tr>
-			<th>Name</th>
-			<th>Title</th>
+			<th>No</th>
+			<th>Apart Name</th>
+			<th>Floor</th>
+			<th>Price</th>
 			<th>Date</th>
-			
 		</tr>
-		<c:forEach items="${boardlist}" var="item">
-			<tr>
-				<td>${item.bdName}</td>
-				<td><a href="selectone?title=${item.bdTitle}">${item.bdTitle}</a></td>
-				<td>${item.bdDate}</td>
+		<c:forEach items="${boardlist}" var="board">
+			<tr onclick="location.href='selectone?bno=${board.bno}'" formmethod="post">
+				<td>${board.bno}</td>
+				<td>${board.apartName}</td>
+				<td>${board.floor}</td>
+				<td>${board.price}</td>
+				<td>${board.date}</td>
 			</tr>
 		</c:forEach>
-		<tr>
-			<td colspan="6" align="right">
-				<input type="button" value="글쓰기" onclick="location='writeboard.do'">
-			</td>
-		</tr>
 	</table>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.tmp.dto;
 
 public class TestDTO {
-	private String table;
     private String email;
     private String userName;
 

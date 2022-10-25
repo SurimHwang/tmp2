@@ -4,13 +4,13 @@
 
 	<select id="login" parameterType="com.tmp.dto.TestDTO" resultType="com.tmp.dto.TestDTO">
 		select id as email, name as userName
-		from user
+		from tmp_user
 		where id=#{email}
 		and name=#{userName}
 	</select>
 
 	<insert id="signUp" parameterType="com.tmp.dto.TestDTO">
-		insert into user (
+		insert into tmp_user (
 		id
 		, name
 		) values (

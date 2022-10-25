@@ -6,28 +6,91 @@
 <title>SelectOne</title>
 </head>
 <body>
+	<h3>게시글 보기</h3>
 	<table border="1">
 		<tr>
-			<th>NAME</th>
-			<td>${board.bdName}</td>
+			<th>No</th>
+			<td>${board.bno}</td>
 		</tr>
 		<tr>
-			<th>TITLE</th>
-			<td>${board.bdTitle}</td>
+			<th>Apart Name</th>
+			<td>${board.apartName}</td>
 		</tr>
 		<tr>
-			<th>CONTENT</th>
-			<td><textarea rows="10" cols="60" readonly="readonly">${board.bdContent}</textarea></td>
+			<th>Floor</th>
+			<td>${board.floor}</td>
 		</tr>
 		<tr>
-			<td><a href="updatepage.do?title=${board.bdTitle}?content=${board.bdContent}">수정</a>&nbsp;&nbsp;
-			<a href="deleteboard.do?title=${board.bdTitle}?content=${board.bdContent}">삭제</a>&nbsp;&nbsp;
-			<button onclick="location='boardlist.do'">목록</button>
-	</td>
+			<th>Price(만원)</th>
+			<td>${board.price}</td>
+		</tr>
+		<tr>
+			<th>Area(㎡)</th>
+			<td>${board.area}</td>
+		</tr>
+		<tr>
+			<th>Date</th>
+			<td>${board.date}</td>
+		</tr>
+		<tr>
+			<th>Address</th>
+			<td>${board.address}</td>
 		</tr>
 	</table>
-	</form>
+	<button onclick="location='boardlist.do'" formmethod="post">목록</button>
 	
+	<!-- 댓글 시작 -->
+		<div class="box">	
+				<ul class="replyClass" >
+					<c:forEach items="${reply}" var="reply" varStatus="status">
+						<form action="/replyModify" method="get">
+							<li>
+								<input type="hidden" name="rno" value="${reply.rno}"> 
+								<input type="hidden" name="bno" value="${reply.bno}">
+								${reply.writer}|${reply.date}<br>
+								<p id="${status.count}">${reply.contents}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="hideReply(${status.count})">수정</button><button formaction="/replyDelete" type="submit" >삭제</button></p>
+								<textarea rows="4" cols="50" style="display:none" id="txt${status.count}" name="contents">${reply.contents}</textarea>
+								<button id="upbtn${status.count}" type="submit" style="display:none">수정완료</button>
+								<button type="button" id="cancelbtn${status.count}" onclick="location='selectone?bno=${board.bno}'" style="display:none">취소</button>
+							</li>
+						</form>
+					</c:forEach>
+				</ul>
+		
+			<form action="/replyWrite" method="get">
+				<br/>
+				<p>
+					<label>댓글 작성자</label> <input type="text"
+						name="writer"
+						value=<%String name = (String) session.getAttribute("userName");%>
+						<%=name%> readonly="readonly">
+				</p>
+				<p>
+					<textarea rows="5" cols="50" name="contents"></textarea>
+				</p>
+				<p>
+					<input type="hidden" name="bno" value="${board.bno}">
+					<button type="submit">작성</button>
+				</p>
+			</form>
+		</div>
+	<!-- 댓글 끝 -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		function hideReply(id){	
+			var pTag = document.getElementById(id);
+			pTag.style.display="none";
+			
+			var txtArea = document.getElementById("txt"+id);
+			txtArea.style.display="";
+			
+			var upbtn = document.getElementById("upbtn"+id);
+			upbtn.style.display="";
+			
+			var ccbtn = document.getElementById("cancelbtn"+id);
+			ccbtn.style.display="";
+		}
+	</script>
 </body>
 </html>
 
