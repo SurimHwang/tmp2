@@ -29,4 +29,6 @@ public interface BoardServices {
 
 	// 댓글 삭제
 	void replyDelete(RereplyDTO dto);
+	
+	int selectNextRno();
 }

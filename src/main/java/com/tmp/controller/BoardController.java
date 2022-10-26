@@ -36,6 +36,9 @@ public class BoardController {
 		
 		model.addAttribute("board", board);
 		
+		int rno = BoardServices.selectNextRno();
+		model.addAttribute("rno", rno);
+		
 		// 댓글 리스트 조회
 		List<RereplyDTO> reply = BoardServices.replyList(bno);
 		model.addAttribute("reply", reply);

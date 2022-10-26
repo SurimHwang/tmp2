@@ -51,6 +51,14 @@
 	*
 	from tmp_rereply
 	where bno=#{bno}
+	order by parentId;
+	</select>
+	
+	<select id="selectNextRno" resultType="int">
+	select Auto_increment 
+	from information_schema.tables 
+	where table_schema="groupware" 
+	and table_name="tmp_rereply"
 	</select>
 	
 	<insert id="replyWrite" parameterType="com.tmp.dto.RereplyDTO">
@@ -59,18 +67,16 @@
 		, writer
 		, contents
 		, date
-		, originNo
-		, groupOrd
-		, groupLayer
+		, parentId
+		, depth
 	)
 	values(
 		#{bno}
 		, #{writer}
 		, #{contents}
 		, now()
-		, #{originNo}
-		, #{groupOrd}
-		, #{groupLayer}
+		, #{parentId}
+		, #{depth}
 	)
 	</insert>
 	

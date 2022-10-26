@@ -8,9 +8,9 @@ public class RereplyDTO {
 	private String writer;
 	private String contents;
 	private Date date;
-	private int originNo;
-	private int groupOrd;
-	private int groupLayer;
+	private int parentId;
+	private int depth;
+	
 	public int getRno() {
 		return rno;
 	}
@@ -41,23 +41,17 @@ public class RereplyDTO {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getOriginNo() {
-		return originNo;
+	public int getParentId() {
+		return parentId;
 	}
-	public void setOriginNo(int originNo) {
-		this.originNo = originNo;
+	public void setParentId(int parentId) {
+		this.parentId = parentId;
 	}
-	public int getGroupOrd() {
-		return groupOrd;
+	public int getDepth() {
+		return depth;
 	}
-	public void setGroupOrd(int groupOrd) {
-		this.groupOrd = groupOrd;
-	}
-	public int getGroupLayer() {
-		return groupLayer;
-	}
-	public void setGroupLayer(int groupLayer) {
-		this.groupLayer = groupLayer;
+	public void setDepth(int depth) {
+		this.depth = depth;
 	}
 	
 }
