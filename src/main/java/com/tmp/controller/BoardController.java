@@ -38,6 +38,7 @@ public class BoardController {
 		
 		int rno = BoardServices.selectNextRno();
 		model.addAttribute("rno", rno);
+		System.out.println("다음댓글번호rrr: "+rno);
 		
 		// 댓글 리스트 조회
 		List<RereplyDTO> reply = BoardServices.replyList(bno);

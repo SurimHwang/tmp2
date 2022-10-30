@@ -92,7 +92,7 @@ public class APIController {
 	    			dto.setAddress("서울시 종로구");
 	    			
 //	    			dtos.add(dto);
-//	    			BoardServices.insertbdContent(dto);
+	    			BoardServices.insertbdContent(dto);
 	    			
 	    		} else {
 	    			System.out.println("공백 입니다.");

@@ -55,10 +55,11 @@
 	</select>
 	
 	<select id="selectNextRno" resultType="int">
-	select Auto_increment 
+	<!-- select Auto_increment
 	from information_schema.tables 
-	where table_schema="groupware" 
-	and table_name="tmp_rereply"
+	where table_schema="springmybatis" 
+	and table_name="tmp_rereply" -->
+	select max(rno)+1 from tmp_rereply;
 	</select>
 	
 	<insert id="replyWrite" parameterType="com.tmp.dto.RereplyDTO">

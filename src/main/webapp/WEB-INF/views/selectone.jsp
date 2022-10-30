@@ -49,7 +49,11 @@
 								<input type="hidden" name="bno" value="${reply.bno}">
 								${reply.writer}|${reply.date}<br>
 								
-								<p id="${status.count}">${reply.contents}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="rereply(${status.count})">답글</button><button type="button" onclick="hideReply(${status.count})">수정</button><button formaction="/replyDelete" type="submit" >삭제</button></p>
+								<p id="${status.count}">${reply.contents}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<c:if test = "${reply.depth eq 0}">
+									<button type="button" onclick="rereply(${status.count})">답글</button>
+								</c:if>
+								<button type="button" onclick="hideReply(${status.count})">수정</button><button formaction="/replyDelete" type="submit" >삭제</button></p>
 								<textarea rows="4" cols="50" style="display:none" id="txt${status.count}" name="contents">${reply.contents}</textarea>
 								
 								<!-- 댓글 수정란 -->
@@ -58,7 +62,7 @@
 								
 								<!-- 답글 작성란 -->
 								<p id="ptagrereply${status.count}" style="display:none">작성자:<%String name = (String) session.getAttribute("userName");%><%=name%></p>
-								<textarea rows="4" cols="50" style="display:none" id="txtrereply${status.count}" name="REcontents">RE:</textarea>
+								<textarea rows="4" cols="50" style="display:none" id="txtrereply${status.count}" name="REcontents">   RE:</textarea>
 								 <button type="button" id="btnrereply${status.count}" style="display:none"
 								 onclick="fnSubMit(${board.bno}, ${reply.rno})">작성완료</button>
 							</li>
